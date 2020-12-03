@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "433197625858",
+    "firebase_url": "https://postblish.firebaseio.com",
+    "project_id": "postblish",
+    "storage_bucket": "postblish.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:433197625858:android:6eccb2a5909762fa6ced1b",
+        "android_client_info": {
+          "package_name": "com.example.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "433197625858-i2cc24cr3ltmk4e9v8g6q5lsmpj3g6qf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD31XvmsvOIHPfEnCIkc9KTe3uJVUNvBfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "433197625858-i2cc24cr3ltmk4e9v8g6q5lsmpj3g6qf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
