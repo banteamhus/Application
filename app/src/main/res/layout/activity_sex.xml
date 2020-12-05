@@ -16,7 +16,7 @@
         tools:ignore="MissingConstraints">
 
         <Button
-            android:id="@+id/btn_name"
+            android:id="@+id/btn_sex_back"
             android:layout_width="100dp"
             android:drawableLeft="@drawable/left_24"
             android:text="Trở lại"
@@ -35,7 +35,7 @@
 
         <Button
             android:textAllCaps="false"
-            android:id="@+id/btn_name_save"
+            android:id="@+id/btn_sex_save"
             android:layout_width="match_parent"
             android:text="Lưu"
             style="?android:attr/borderlessButtonStyle"
@@ -61,9 +61,9 @@
         android:layout_height="30dp"/>
 
     <EditText
-        android:id="@+id/edt_user"
+        android:id="@+id/edt_sex"
         android:singleLine="true"
-        android:text="Nữ"
+
         android:paddingTop="10dp"
         android:textSize="15sp"
         android:hint="Nhập giới tính"

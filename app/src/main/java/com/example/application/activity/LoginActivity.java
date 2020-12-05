@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.application.R;
-import com.example.application.account.Date;
 import com.example.application.account.User;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -37,9 +36,11 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
+import com.google.firebase.database.ValueEventListener;
 public class LoginActivity extends AppCompatActivity  {
     CallbackManager mCallbackManager;
     private FirebaseAuth mAuth;
@@ -125,33 +126,9 @@ public class LoginActivity extends AppCompatActivity  {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            // đẩy dữ liệu người dùng  lên firebase ở mục users
-                            User users = new User();
-                            users.setId(user.getUid());
-                            users.setName(user.getDisplayName());
-                            users.setGmail(user.getEmail());
-                            Date date = new Date();
-                           // users.setDate(date); //xét mặc định, người dùng về sau chỉnh lại
-                            users.setGender(false); // xét mặc định, người dùng về sau chỉnh lại
-                            myRef.child("users").child(users.getId())
-                                    .setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    // Write was successful!
-                                    // ...
-                                }
-                            })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            // Write failed
-                                            // ...
-                                        }
-                                    });
+                            upDatabase();
                             // xong
-
+                            // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công",
                                     Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(LoginActivity.this, Postlish_main_testActivity.class);
@@ -203,32 +180,9 @@ public class LoginActivity extends AppCompatActivity  {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            upDatabase();
                             // Sign in success, update UI with the signed-in user's information
-                            FirebaseUser user = mAuth.getCurrentUser();
                             // đẩy dữ liệu người dùng  lên firebase ở mục users
-                            User users = new User();
-                            users.setId(user.getUid());
-                            users.setName(user.getDisplayName());
-                            users.setGmail(user.getEmail());
-                            Date date = new Date();
-                           // users.setDate(date); //xét mặc định, người dùng về sau chỉnh lại
-                            users.setGender(false); // xét mặc định, người dùng về sau chỉnh lại
-                            myRef.child("users").child(users.getId())
-                                    .setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    // Write was successful!
-                                    // ...
-                                }
-                            })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-                                            // Write failed
-                                            // ...
-                                        }
-                                    });
-                            // xong
                             Intent intent = new Intent(LoginActivity.this, Postlish_main_testActivity.class);
                             startActivity(intent);
                         } else {
@@ -270,6 +224,51 @@ public class LoginActivity extends AppCompatActivity  {
                 });
     }
     // Ánh xạ find id
+    public void upDatabase(){
+        FirebaseUser user = mAuth.getCurrentUser();
+        User users = new User();
+        users.setId(user.getUid());
+        users.setName(user.getDisplayName());
+        users.setGmail(user.getEmail());
+        users.setPhotoUrl(user.getPhotoUrl().toString());
+        users.setDate("01/01/2001"); //xét mặc định, người dùng về sau chỉnh lại
+        users.setGender(false); // xét mặc định, người dùng về sau chỉnh lại
+        DatabaseReference mDatabase;
+        mDatabase = FirebaseDatabase.getInstance().getReference("users");
+        mDatabase.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+
+                    }
+                    else{
+                        myRef.child("users").child(users.getId())
+                                .setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                // Write was successful!
+                                // ...
+                            }
+                        })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        // Write failed
+                                        // ...
+                                    }
+                                });
+
+                    }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+    }
+
     public void Anhxa(){
         edtTenDn=(EditText)findViewById(R.id.edt_login_email_sdt);
         edtMk=(EditText) findViewById(R.id.edt_login_password);

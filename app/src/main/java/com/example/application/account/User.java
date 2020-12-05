@@ -4,11 +4,11 @@ public class User {
     private String id;
     private String name;
     private String gmail;
-    Date dt = new Date();
-    private String date = dt.toString();
-    private boolean gender;
+    private String date = "01/01/2001";
+    private boolean gender = false;
     private int role = 0;
-    public User(String id, String name, String gmail, Date date, boolean gender,int role) {
+    private String photoUrl = "";
+    public User(String id, String name, String gmail, String date, boolean gender,int role) {
         this.id = id;
         this.name = name;
         this.gmail = gmail;
@@ -18,6 +18,14 @@ public class User {
     }
     public User(){
 
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 
     public int getRole() {

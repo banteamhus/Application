@@ -18,16 +18,22 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.bumptech.glide.Glide;
 import com.example.application.R;
+import com.example.application.account.User;
 import com.example.application.activity.AccountActivity;
 import com.example.application.activity.LoginActivity;
 import com.example.application.viewmodel.MenuViewModel;
 import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MenuFragment extends Fragment {
-
-
+    private User user1 = new User();
+    private DatabaseReference mDatabase;
     LinearLayout linearLayout_header;
     ImageView imageView_header;
     ImageView img_avatar;
@@ -58,13 +64,25 @@ public class MenuFragment extends Fragment {
         logoutAccount=view.findViewById(R.id.button_logout);
         mAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = mAuth.getCurrentUser();
+        mDatabase = FirebaseDatabase.getInstance().getReference("users");
         if(user != null) {
-            String photoURL = user.getPhotoUrl().toString();
-            String name = user.getDisplayName();
-            String gmail = user.getEmail();
-            Glide.with(this).load(photoURL).into(img_avatar);
-            textView_name.setText(name);
-            textView_gmail.setText(gmail);
+            mDatabase.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    user1 = dataSnapshot.getValue(User.class);
+
+                    String name = user1.getName();
+                    textView_name.setText(name);
+                    textView_gmail.setText(user1.getGmail());
+                    String photoURL = user1.getPhotoUrl().toString();
+                    Glide.with(getActivity()).load(photoURL).into(img_avatar);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    System.out.println("The read failed: " + databaseError.getCode());
+                }
+            });
         }
 
 

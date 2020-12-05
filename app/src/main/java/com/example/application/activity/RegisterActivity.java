@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.application.R;
-import com.example.application.account.Date;
 import com.example.application.account.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -20,16 +19,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-//import com.android.volley.AuthFailureError;
-//import com.android.volley.Request;
-//import com.android.volley.RequestQueue;
-//import com.android.volley.Response;
-//import com.android.volley.VolleyError;
-//import com.android.volley.toolbox.StringRequest;
-//import com.android.volley.toolbox.Volley;
+
 
 public class RegisterActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -47,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnDk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                createAccountbyEmail_Pass();
+                checkEmailExistsOrNot();
 
             }
         });
@@ -55,17 +49,39 @@ public class RegisterActivity extends AppCompatActivity {
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
     }
+    void checkEmailExistsOrNot(){
+        int n =0;
+        mAuth.fetchSignInMethodsForEmail(edtEmail.getText().toString()).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+            @Override
+            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                if (task.getResult().getSignInMethods().size() == 0){
+                    // email not existed
+                    createAccountbyEmail_Pass();
+                }else {
+                    // email existed
+                    Toast.makeText(RegisterActivity.this, "Tài khoản gmail đã tồn tại", Toast.LENGTH_SHORT).show();
+                }
 
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
     public void createAccountbyEmail_Pass() {
         final String email = edtEmail.getText().toString();
         String password = edtPassword.getText().toString();
         String password2 = edtPassword2.getText().toString();
-        if (password.equals(password2)) {
+        final String name = edtUsername.getText().toString();
+        // thêm điều kiện
+        if (password.equals(password2) && name != null  ) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -81,10 +97,10 @@ public class RegisterActivity extends AppCompatActivity {
                                                 //Tiến hành thông tin user vào Database
                                                 User users = new User();
                                                 users.setId(mAuth.getUid());
-                                                users.setName(edtUsername.getText().toString());
+                                                users.setName(name);
                                                 users.setGmail(email);
-                                                Date date = new Date();
-                                             //   users.setDate(date); // chưa sửa được cái layout
+                                                users.setPhotoUrl("https://ephoto360.com/uploads/worigin/2020/03/23/tao-avatar-mac-dinh-facebook-thay-nen-cuc-hot5e7838ae39057_96eb8aef68a3aa00523448390b49fbcb.jpg");
+                                                users.setDate(edtTendn.getText().toString()); // chưa sửa được cái layout
                                                 users.setGender(false); // chưa sửa đc layout
                                                 myRef.child("users").child(users.getId())
                                                         .setValue(users).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -102,7 +118,9 @@ public class RegisterActivity extends AppCompatActivity {
                                                             }
                                                         });
                                                 // xong
-
+                                                Toast.makeText(RegisterActivity.this,"Tạo tài khoản thành công",Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
+                                                startActivity(intent);
                                             }
                                         }
                                     });
@@ -115,9 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                 }
             });
-            Toast.makeText(RegisterActivity.this,"Tạo tài khoản thành công",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-            startActivity(intent);
+
         }
         else{
             Toast.makeText(RegisterActivity.this,"Tạo tài khoản thất bại",Toast.LENGTH_SHORT).show();
