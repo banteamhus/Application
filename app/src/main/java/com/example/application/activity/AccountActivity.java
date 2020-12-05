@@ -69,7 +69,7 @@ public class AccountActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private User user1 = new User();
     Button deleteAccount;
-    Button logoutAccount;
+
     String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
