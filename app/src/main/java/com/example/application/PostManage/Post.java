@@ -4,20 +4,18 @@ package com.example.application.PostManage;
 import com.google.firebase.database.ServerValue;
 
 public class Post {
-
-
     private String postKey;
     private String title;
-    private String description;
+    private String postContentId;
     private String picture;
     private String userId;
     private String userPhoto;
     private Object timeStamp;
 
 
-    public Post(String title, String description, String picture, String userId, String userPhoto) {
+    public Post(String title, String postContentId, String picture, String userId, String userPhoto) {
         this.title = title;
-        this.description = description;
+        this.postContentId = postContentId;
         this.picture = picture;
         this.userId = userId;
         this.userPhoto = userPhoto;
@@ -41,8 +39,12 @@ public class Post {
         return title;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPostContentId() {
+        return postContentId;
+    }
+
+    public void setPostContentId(String postContentId) {
+        this.postContentId = postContentId;
     }
 
     public String getPicture() {
@@ -65,9 +67,7 @@ public class Post {
         this.title = title;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+
 
     public void setPicture(String picture) {
         this.picture = picture;

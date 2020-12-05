@@ -59,7 +59,7 @@
                     android:id="@+id/textview_gmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
                     android:layout_marginLeft="15dp"
                     android:text="trandinhdai_t64@hus.edu.vn"/>
 

@@ -5,7 +5,7 @@ public class Writing {
     private String userId;
     private double times;
     private float rating;
-    private boolean mode;
+    private boolean mode; //int is better
 
     protected Writing(){
         writingId = "UnRegistered";
