@@ -8,6 +8,7 @@ import java.util.ArrayList;
     private ArrayList<ReplyComment> replies;
 } */
 public class WritingComment{
+
     private String writingId;
     private ArrayList<ReplyComment> replies;
 }
