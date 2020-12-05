@@ -23,6 +23,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.application.PostManage.Post;
+import com.example.application.PostManage.PostContent;
 import com.example.application.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -78,6 +79,25 @@ public class AddPost extends AppCompatActivity {
             public void onClick(View v) {
                 String title = title_post.getText().toString();
                 String description = description_post.getText().toString();
+                final String timeStamp = String.valueOf(System.currentTimeMillis());
+                //here we will set the filepath of our image
+                DatabaseReference contentdata = FirebaseDatabase.getInstance().getReference("PostsContent");
+                PostContent a = new PostContent();
+                a.setContent(description);
+                contentdata.child(timeStamp).setValue(a)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+
+
+
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
 
                 if (TextUtils.isEmpty(title)){
                     title_post.setError("Title is required");
@@ -86,13 +106,13 @@ public class AddPost extends AppCompatActivity {
                     description_post.setError("Description is required");
                 }
                 else {
-                    uploadData(title , description);
+                    uploadData(title , timeStamp);
                 }
             }
         });
     }
 
-    private void uploadData(final String title, final String description) {
+    private void uploadData(final String title, final String idcontentPost) {
 
         pd.setMessage("Publising post");
         pd.show();
@@ -136,10 +156,11 @@ public class AddPost extends AppCompatActivity {
                                 hashMap.put("pImage" , downloadUri);
                                 hashMap.put("pDescription" , description);
                                 hashMap.put("pTime" ,  timeStamp); */
-                                Post post = new Post(title,description,downloadUri,firebaseUser.getUid(),firebaseUser.getPhotoUrl().toString());
+                                Post post = new Post(title,idcontentPost,downloadUri,firebaseUser.getUid(),firebaseUser.getPhotoUrl().toString());
 
 
                                 //now we will pust the data to firebase database
+
                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Posts");
                                 ref.child(timeStamp).setValue(post)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -153,8 +174,8 @@ public class AddPost extends AppCompatActivity {
                                                 image_uri = null ;
 
                                                 //when post is publised user must go to home activity means main dashboad
-                                                startActivity(new Intent(AddPost.this , Postlish_main_testActivity.class));
-
+                                                //startActivity(new Intent(AddPost.this , Postlish_main_testActivity.class));
+                                                onBackPressed();
 
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
@@ -267,9 +288,9 @@ public class AddPost extends AppCompatActivity {
     }
 
     public void Anhxa(){
-        title_post = findViewById(R.id.title_blog);
-        description_post = findViewById(R.id.description_blog);
+        title_post = findViewById(R.id.title_post);
+        description_post = findViewById(R.id.description_post);
         upload = findViewById(R.id.upload);
-        post_image = findViewById(R.id.post_image_blog);
+        post_image = findViewById(R.id.post_image_post);
     }
 }
