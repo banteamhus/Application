@@ -4,7 +4,7 @@ package com.example.application.object;
     private String writingId;
 
     private ArrayList<ReplyComment> replies;
-} */ //
+} */ ////
 public class WritingComment{
 
 }
