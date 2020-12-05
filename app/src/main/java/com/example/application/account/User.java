@@ -6,7 +6,7 @@ public class User {
     private String gmail;
     private String date = "01/01/2001";
     private boolean gender = false;
-    private int role = 0;
+    private int role ;
     private String photoUrl = "";
     public User(String id, String name, String gmail, String date, boolean gender,int role) {
         this.id = id;

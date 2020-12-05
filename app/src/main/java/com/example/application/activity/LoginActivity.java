@@ -231,6 +231,7 @@ public class LoginActivity extends AppCompatActivity  {
         users.setName(user.getDisplayName());
         users.setGmail(user.getEmail());
         users.setPhotoUrl(user.getPhotoUrl().toString());
+        users.setRole(0);
         users.setDate("01/01/2001"); //xét mặc định, người dùng về sau chỉnh lại
         users.setGender(false); // xét mặc định, người dùng về sau chỉnh lại
         DatabaseReference mDatabase;

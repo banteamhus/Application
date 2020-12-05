@@ -99,6 +99,7 @@ public class RegisterActivity extends AppCompatActivity {
                                                 users.setId(mAuth.getUid());
                                                 users.setName(name);
                                                 users.setGmail(email);
+                                                users.setRole(0);
                                                 users.setPhotoUrl("https://ephoto360.com/uploads/worigin/2020/03/23/tao-avatar-mac-dinh-facebook-thay-nen-cuc-hot5e7838ae39057_96eb8aef68a3aa00523448390b49fbcb.jpg");
                                                 users.setDate(edtTendn.getText().toString()); // chưa sửa được cái layout
                                                 users.setGender(false); // chưa sửa đc layout

@@ -97,7 +97,7 @@ public class AccountActivity extends AppCompatActivity {
                     userid.setText(user.getUid());
                     int a = user1.getRole();
                     if(a==0) {
-                        role.setText("a");
+                        role.setText("Tài khoản Thường");
                     }
                     else if(a==1){
                         role.setText("Tài khoản Premium");
