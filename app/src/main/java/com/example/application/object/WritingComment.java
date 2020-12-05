@@ -9,6 +9,5 @@ import java.util.ArrayList;
 } */
 public class WritingComment{
     private String writingId;
-
     private ArrayList<ReplyComment> replies;
 }
