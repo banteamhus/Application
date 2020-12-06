@@ -73,9 +73,16 @@ public class MenuFragment extends Fragment {
 
                     String name = user1.getName();
                     textView_name.setText(name);
-                    textView_gmail.setText(user1.getGmail());
-                    String photoURL = user1.getPhotoUrl().toString();
-                    Glide.with(getActivity()).load(photoURL).into(img_avatar);
+
+                    if(user1.getGmail() != null){
+                        textView_gmail.setText(user1.getGmail());
+                    }
+
+                    if(user1.getPhotoUrl() != null) {
+                        String photoURL = user1.getPhotoUrl().toString();
+                        Glide.with(getActivity()).load(photoURL).into(img_avatar);
+                    }
+
                 }
 
                 @Override
