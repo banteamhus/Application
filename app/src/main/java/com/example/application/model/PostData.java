@@ -4,9 +4,9 @@ public class PostData {
 
     String userName;
     String descp;
-    Integer imageUrl;
+    String imageUrl;
 
-    public PostData(String userName, String descp, Integer imageUrl) {
+    public PostData(String userName, String descp, String imageUrl) {
         this.userName = userName;
         this.descp = descp;
         this.imageUrl = imageUrl;
@@ -28,11 +28,11 @@ public class PostData {
         this.descp = descp;
     }
 
-    public Integer getImageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(Integer imageUrl) {
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 }

@@ -11,13 +11,13 @@ import android.view.ViewGroup;
 import com.example.application.R;
 
 
-public class PublishFragment extends Fragment {
+public class SeenFragment extends Fragment {
 
-    public static PublishFragment getInstance() {
-        PublishFragment publishFragment = new PublishFragment();
-        return publishFragment;
+
+    public static SeenFragment getInstance() {
+        SeenFragment seenFragment = new SeenFragment();
+        return seenFragment;
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,6 +29,6 @@ public class PublishFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_publish, container, false);
+        return inflater.inflate(R.layout.fragment_seen, container, false);
     }
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="name_mainactivity">Power by BanTeam_K64A3</string>
 
-    <string name="app_name">Application</string>
+    <string name="app_name">Postblish</string>
     <string name="login_email_sdt">Email/Số điện thoại</string>
     <string name="login_password">Mật khẩu</string>
     <string name="login_quenmk">Quên mật khẩu?</string>

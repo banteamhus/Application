@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.application.R;
+import com.example.application.function.HomeActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -27,14 +28,18 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
+
+
+
                 if(user == null) {
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }
                 else{
-                    Intent intent = new Intent(MainActivity.this, Postlish_main_testActivity.class);
+                    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                     startActivity(intent);
                 }
+
             }
         }.start();
     }

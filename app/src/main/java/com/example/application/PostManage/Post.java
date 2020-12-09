@@ -9,23 +9,32 @@ public class Post {
     private String postContentId;
     private String picture;
     private String userId;
+    private String userName;
     private String userPhoto;
     private Object timeStamp;
 
 
-    public Post(String title, String postContentId, String picture, String userId, String userPhoto) {
+    public Post(String title, String postContentId, String picture, String userId,String userName,String userPhoto) {
         this.title = title;
         this.postContentId = postContentId;
         this.picture = picture;
         this.userId = userId;
         this.userPhoto = userPhoto;
         this.timeStamp = ServerValue.TIMESTAMP;
+        this.userName = userName;
     }
 
     // make sure to have an empty constructor inside ur model class
     public Post() {
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public String getPostKey() {
         return postKey;

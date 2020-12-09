@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".function.PublishActivity">
+
+    <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_above="@id/bottom_navigation">
+
+          <TextView
+              android:id="@+id/create_post"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:layout_marginLeft="20dp"
+              android:layout_marginTop="70dp"
+              android:text="Tạo bài viết"
+              android:textColor="#000000"
+              android:textSize="30dp"
+              />
+
+          <ImageButton
+              android:id="@+id/image_money"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:layout_marginTop="120dp"
+              android:scaleType="fitStart"/>
+          /android:src="@drawable/kiemtien"/>
+          /  android:src="@mipmap/money"/>
+
+          <TextView
+              android:id="@+id/draft"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:text="Bản nháp"
+              android:textColor="#000000"
+              android:textSize="30dp"
+              android:layout_marginLeft="20dp"
+              android:layout_marginTop="360dp"
+              />
+
+
+
+          <TextView
+              android:id="@+id/none"
+              android:layout_width="228dp"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="20dp"
+              android:layout_marginTop="430dp"
+              android:text="Chưa có bài viết"
+              android:textColor="#000000"
+              android:textSize="20dp" />
+      </RelativeLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        app:itemBackground="@color/colorWhite"
+        app:itemTextColor="@drawable/indicator_selected"
+        app:itemIconTint="@drawable/indicator_selected"
+        app:menu="@menu/menu_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

@@ -54,11 +54,13 @@ import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class AccountActivity extends AppCompatActivity {
+
     private static final  int GALLERY_IMAGE_CODE = 100 ;
     private static final  int CAMERA_IMAGE_CODE = 200 ;
     Uri image_uri = null ;
-   // Button btn1;
-  //  Button btn2;
+    Button changeImg;
+    // Button btn1;
+    //  Button btn2;
     Button btn3;
     Button btn4;
     Button btn5;
@@ -71,6 +73,7 @@ public class AccountActivity extends AppCompatActivity {
     Button deleteAccount;
 
     String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,8 +83,12 @@ public class AccountActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = mAuth.getCurrentUser();
+        if (mDatabase == null) {
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("users");
+            mDatabase = database.getReference("users");
+            // ...
+        }
         if(user != null) {
             mDatabase.child(user.getUid()).addValueEventListener(new ValueEventListener() {
                 @Override
@@ -150,7 +157,12 @@ public class AccountActivity extends AppCompatActivity {
 
             }
         });
-
+        changeImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeAvatar();
+            }
+        });
        /* btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -201,8 +213,8 @@ public class AccountActivity extends AppCompatActivity {
     }
 
     public void Anhxa(){
-      //  btn1=findViewById(R.id.btn_account_id);
-      //  btn2=findViewById(R.id.btn_account_user);
+        //  btn1=findViewById(R.id.btn_account_id);
+        //  btn2=findViewById(R.id.btn_account_user);
         btn3=findViewById(R.id.btn_account_pw);
         btn4=findViewById(R.id.btn_account_name);
         btn5=findViewById(R.id.btn_account_sex);
@@ -215,6 +227,7 @@ public class AccountActivity extends AppCompatActivity {
         userdate = findViewById(R.id.textview_ngaysinh);
         deleteAccount=findViewById(R.id.button_deleteAccount);
         role = findViewById(R.id.text_role);
+        changeImg = findViewById(R.id.button_changeImg);
     }
     private void imagePickDialog() {
         //here 0 is for camera and 1 is for gallery so please do it like me
@@ -258,10 +271,10 @@ public class AccountActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                             if(error == null){
-                                //Toast.makeText(AccountActivity.this,"Cập nhật ảnh đại diện thành công",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AccountActivity.this,"Cập nhật ảnh đại diện thành công",Toast.LENGTH_SHORT).show();
                             }
                             else{
-                              //  Toast.makeText(AccountActivity.this,"Xảy ra lỗi",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AccountActivity.this,"Xảy ra lỗi",Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

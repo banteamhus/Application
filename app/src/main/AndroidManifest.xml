@@ -15,7 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.AddPost"></activity>
+        <activity android:name=".function.NotificationActivity"></activity>
+        <activity android:name=".function.LibraryActivity" />
+        <activity android:name=".function.PublishActivity" />
+        <activity android:name=".function.MenuActivity" />
+        <activity android:name=".function.SearchActivity" />
+        <activity android:name=".function.HomeActivity" />
+        <activity android:name=".activity.AddPost" />
         <activity android:name=".update_account.NameActivity" />
         <activity android:name=".update_account.SexActivity" />
         <activity android:name=".update_account.DateActivity" />
@@ -23,7 +29,6 @@
         <activity android:name=".update_account.UserActivity" />
         <activity android:name=".update_account.IDActivity" />
         <activity android:name=".activity.AccountActivity" />
-        <activity android:name=".activity.Postlish_main_testActivity" />
         <activity android:name=".activity.Forget_passwordAcitivy" />
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.LoginActivity" />

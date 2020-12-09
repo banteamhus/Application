@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/menu_fragment"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.MenuFragment"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context=".function.MenuActivity">
 
-
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/linear_menu"
         android:orientation="vertical"
@@ -114,11 +116,11 @@
                 <ImageView
                     android:layout_width="@dimen/cardview_icon"
                     android:layout_height="@dimen/cardview_icon"
-                    android:src="@drawable/save"/>
+                    android:src="@drawable/notification"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Đã lưu"
+                    android:text="Thông báo"
                     android:textStyle="bold"
                     android:textAlignment="center"/>
             </LinearLayout>
@@ -234,7 +236,7 @@
                 <ImageView
                     android:layout_width="@dimen/cardview_icon"
                     android:layout_height="@dimen/cardview_icon"
-                    android:src="@drawable/home"/>
+                    android:src="@drawable/save"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -304,11 +306,21 @@
             android:paddingRight="220dp"
             android:text="Đăng xuất" />
     </FrameLayout>
+    </RelativeLayout>
 
 
 
 
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        app:itemBackground="@color/colorWhite"
+        app:itemTextColor="@drawable/indicator_selected"
+        app:itemIconTint="@drawable/indicator_selected"
+        app:menu="@menu/menu_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:layout_alignParentBottom="true"/>
 
 
 

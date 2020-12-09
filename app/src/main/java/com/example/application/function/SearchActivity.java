@@ -1,49 +1,70 @@
-package com.example.application.fragment;
+package com.example.application.function;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.view.MenuItem;
 import android.widget.EditText;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.application.R;
 import com.example.application.adapter.RecyclerviewAdapter;
 import com.example.application.model.UserData;
-import com.example.application.viewmodel.SearchViewModel;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SearchFragment extends Fragment {
-
+public class SearchActivity extends AppCompatActivity {
 
     RecyclerView userRecycler;
     RecyclerviewAdapter recyclerviewAdapter;
     EditText searchView;
     CharSequence search="";
 
-    private View view;
-    private SearchViewModel mViewModel;
-
-    public static SearchFragment newInstance() {
-        return new SearchFragment();
-    }
-
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search);
 
-        view = inflater.inflate(R.layout.fragment_search, container, false);
-        searchView = view.findViewById(R.id.search_bar);
+        BottomNavigationView bottomNavigationView =findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setSelectedItemId(R.id.nav_search);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.nav_home:
+                        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_library:
+                        startActivity(new Intent(getApplicationContext(),LibraryActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_search:
+                        return true;
+                    case R.id.nav_publish:
+                        startActivity(new Intent(getApplicationContext(),PublishActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_menu:
+                        startActivity(new Intent(getApplicationContext(),MenuActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
+
+
+        searchView = findViewById(R.id.search_bar);
 
         List<UserData> userDataList = new ArrayList<>();
         userDataList.add(new UserData("Anderson Thomas","Android is awesome and this is the part 3 of recyclerview.", R.drawable.photo_male_1));
@@ -87,28 +108,13 @@ public class SearchFragment extends Fragment {
 
             }
         });
-
-        return view;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(SearchViewModel.class);
-        // TODO: Use the ViewModel
     }
 
     private  void  setUserRecycler(List<UserData> userDataList){
-        userRecycler = view.findViewById(R.id.userRecycler);
-        RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(view.getContext(), RecyclerView.VERTICAL, false);
+        userRecycler = findViewById(R.id.userRecycler);
+        RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
         userRecycler.setLayoutManager(layoutManager);
-        recyclerviewAdapter = new RecyclerviewAdapter(view.getContext(),userDataList);
+        recyclerviewAdapter = new RecyclerviewAdapter(this,userDataList);
         userRecycler.setAdapter(recyclerviewAdapter);
     }
-
-
-
-
-
-
 }

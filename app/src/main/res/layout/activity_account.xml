@@ -1,326 +1,118 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activity.AccountActivity">
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <TextView
-        android:id="@+id/textview_account"
+<RelativeLayout tools:context=".activity.AccountActivity" android:orientation="vertical" android:layout_height="match_parent" android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView android:layout_height="50dp" android:layout_width="match_parent" android:textColor="@color/colorDark" android:textSize="20sp" android:gravity="center" android:textStyle="bold" android:text="Tài khoản" android:id="@+id/textview_account"/>
+
+    <View android:layout_height="1dp" android:layout_width="match_parent" android:id="@+id/view_account" android:background="@color/colorDark" android:layout_below="@+id/textview_account"/>
+
+
+    -<LinearLayout android:orientation="vertical" android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/linear_account" android:layout_below="@+id/view_account" android:layout_marginTop="10dp">
+
+
+    -<LinearLayout android:orientation="horizontal" android:layout_height="120dp" android:layout_width="match_parent">
+
+
+    -<LinearLayout android:orientation="vertical" android:layout_height="120dp" android:layout_width="100dp">
+
+    <ImageButton android:layout_height="80dp" android:layout_width="80dp" android:id="@+id/img_avatar" android:src="@drawable/account" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_gravity="start"/>
+
+    <Button
+        android:id="@+id/button_changeImg"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
-        android:text="Tài khoản"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textSize="20sp"
-        android:textColor="@color/colorDark"
-        android:layout_height="50dp"/>
-    <View
-        android:id="@+id/view_account"
-        android:layout_below="@+id/textview_account"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorDark"/>
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp"
+        android:text="Lưu thay đổi"
+        android:textSize="8sp" />
 
-    <LinearLayout
-        android:id="@+id/linear_account"
-        android:layout_below="@+id/view_account"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="120dp">
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="100dp"
-                android:layout_height="120dp">
-
-                <ImageButton
-                    android:id="@+id/img_avatar"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="start"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/account"/>
-
-                <Button
-                    style="?android:attr/borderlessButtonStyle"
-                    android:textSize="8sp"
-                    android:paddingBottom="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Lưu thay đổi"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:weightSum="2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:id="@+id/text_role"
-                    android:paddingLeft="30dp"
-                    android:paddingTop="5dp"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:singleLine="true"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Điền cái gì đó"/>
-
-                <TextView
-                    android:paddingLeft="30dp"
-                    android:paddingTop="5dp"
-                    android:singleLine="true"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Điền cái gì đó"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:textAllCaps="true"
-            android:paddingTop="25dp"
-            android:paddingLeft="12dp"
-            android:textColor="@color/colorDark"
-            android:textStyle="bold"
-            android:layout_width="match_parent"
-            android:text="Thông tin tài khoản"
-            android:textSize="15sp"
-            android:layout_height="60dp"/>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <TextView
-                android:paddingTop="12dp"
-                android:paddingLeft="12dp"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:text="Id "
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/textview_userid"
-                android:paddingLeft="60dp"
-                android:paddingTop="12dp"
-                android:password="true"
-                android:singleLine="true"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:text="0123456789"/>
-            <Button
-                android:id="@+id/btn_account_id"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorWhite"
-                android:drawableStart="@drawable/right_24"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <TextView
-                android:paddingTop="12dp"
-                android:paddingLeft="12dp"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:text="Tên đăng nhập "
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/textview_tendangnhap"
-                android:paddingLeft="60dp"
-                android:paddingTop="12dp"
-                android:singleLine="true"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:text="trandinhdai@hus.edu.vn"/>
-            <Button
-                android:id="@+id/btn_account_user"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorWhite"
-                android:drawableStart="@drawable/right_24"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <TextView
-                android:paddingTop="12dp"
-                android:paddingLeft="12dp"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:text="Mât khẩu "
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/textview_matkhau"
-                android:paddingLeft="60dp"
-                android:paddingTop="12dp"
-                android:singleLine="true"
-                android:password="true"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:text="fkhfdsf"/>
-            <Button
-                android:id="@+id/btn_account_pw"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorWhite"
-                android:drawableStart="@drawable/right_24"
-                />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <TextView
-                android:paddingTop="12dp"
-                android:paddingLeft="12dp"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:text="Tên tài khoản"
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/textview_tentaikhoan"
-                android:paddingLeft="60dp"
-                android:paddingTop="12dp"
-                android:singleLine="true"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:text="Đình Đại"/>
-            <Button
-                android:id="@+id/btn_account_name"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorWhite"
-                android:drawableStart="@drawable/right_24"
-                />
-        </LinearLayout>
+</LinearLayout>
 
 
+    -<LinearLayout android:orientation="vertical" android:layout_height="match_parent" android:layout_width="match_parent" android:weightSum="2">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <TextView
-                android:paddingTop="12dp"
-                android:paddingLeft="12dp"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:text="Giới tính "
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/textview_gioitinh"
-                android:paddingLeft="60dp"
-                android:paddingTop="12dp"
-                android:singleLine="true"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:text="Nữ"/>
-            <Button
-                android:id="@+id/btn_account_sex"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorWhite"
-                android:drawableStart="@drawable/right_24"
-                />
-        </LinearLayout>
+    <TextView android:layout_height="match_parent" android:layout_width="match_parent" android:text="Tài khoản thường" android:id="@+id/text_role" android:layout_marginTop="10dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_gravity="center" android:singleLine="true" android:layout_weight="1" android:paddingTop="5dp" android:paddingLeft="30dp"/>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-            <TextView
-                android:paddingTop="12dp"
-                android:paddingLeft="12dp"
-                android:layout_width="120dp"
-                android:layout_height="match_parent"
-                android:text="Ngày sinh "
-                android:textStyle="bold"/>
-            <TextView
-                android:id="@+id/textview_ngaysinh"
-                android:paddingLeft="60dp"
-                android:singleLine="true"
-                android:paddingTop="12dp"
-                android:layout_width="250dp"
-                android:layout_height="match_parent"
-                android:text="01/01/2000"/>
-            <Button
-                android:id="@+id/btn_account_date"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/colorWhite"
-                android:drawableStart="@drawable/right_24"
-                />
-        </LinearLayout>
+    <TextView android:layout_height="match_parent" android:layout_width="match_parent" android:text="Tìm hiểu về Premium" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_gravity="center" android:singleLine="true" android:layout_weight="1" android:paddingTop="5dp" android:paddingLeft="30dp" android:layout_marginBottom="10dp"/>
 
-        <TextView
-            android:layout_marginTop="15dp"
-            android:paddingTop="25dp"
-            android:paddingLeft="12dp"
-            android:layout_width="match_parent"
-            android:text="Quản lý tài khoản"
-            android:textSize="15sp"
-            android:textColor="@color/colorDark"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            android:layout_height="60dp"/>
+</LinearLayout>
 
-        <Button
-            android:id="@+id/btn_vohieuhoa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/menu_margin"
-            android:textAllCaps="false"
-            android:textAlignment="textStart"
-            style="?android:attr/borderlessButtonStyle"
-            android:text="Vô hiệu hóa tài khoản"/>
+</LinearLayout>
 
-        <Button
-            android:id="@+id/button_deleteAccount"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/menu_margin"
-            android:text="Xóa tài khoản"
-            android:textAlignment="textStart"
-            android:textAllCaps="false"
-            android:textColor="@color/colorRed" />
-
-    </LinearLayout>
+    <TextView android:layout_height="60dp" android:layout_width="match_parent" android:textColor="@color/colorDark" android:textSize="15sp" android:textStyle="bold" android:text="Thông tin tài khoản" android:layout_marginTop="10dp" android:paddingTop="25dp" android:paddingLeft="12dp" android:textAllCaps="true"/>
 
 
+    -<LinearLayout android:orientation="horizontal" android:layout_height="50dp" android:layout_width="match_parent">
+
+    <TextView android:layout_height="match_parent" android:layout_width="120dp" android:textStyle="bold" android:text="Id " android:paddingTop="12dp" android:paddingLeft="12dp"/>
+
+    <TextView android:layout_height="match_parent" android:layout_width="250dp" android:text="0123456789" android:id="@+id/textview_userid" android:singleLine="true" android:paddingTop="12dp" android:paddingLeft="60dp" android:password="true"/>
+
+    <Button android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/btn_account_id" android:background="@color/colorWhite" style="?android:attr/borderlessButtonStyle" android:drawableStart="@drawable/right_24"/>
+
+</LinearLayout>
+
+
+    -<LinearLayout android:orientation="horizontal" android:layout_height="50dp" android:layout_width="match_parent">
+
+    <TextView android:layout_height="match_parent" android:layout_width="120dp" android:textStyle="bold" android:text="Tên đăng nhập " android:paddingTop="12dp" android:paddingLeft="12dp"/>
+
+    <TextView android:layout_height="match_parent" android:layout_width="250dp" android:text="trandinhdai@hus.edu.vn" android:id="@+id/textview_tendangnhap" android:singleLine="true" android:paddingTop="12dp" android:paddingLeft="60dp"/>
+
+    <Button android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/btn_account_user" android:background="@color/colorWhite" style="?android:attr/borderlessButtonStyle" android:drawableStart="@drawable/right_24"/>
+
+</LinearLayout>
+
+
+    -<LinearLayout android:orientation="horizontal" android:layout_height="50dp" android:layout_width="match_parent">
+
+    <TextView android:layout_height="match_parent" android:layout_width="120dp" android:textStyle="bold" android:text="Mât khẩu " android:paddingTop="12dp" android:paddingLeft="12dp"/>
+
+    <TextView android:layout_height="match_parent" android:layout_width="250dp" android:text="fkhfdsf" android:id="@+id/textview_matkhau" android:singleLine="true" android:paddingTop="12dp" android:paddingLeft="60dp" android:password="true"/>
+
+    <Button android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/btn_account_pw" android:background="@color/colorWhite" style="?android:attr/borderlessButtonStyle" android:drawableStart="@drawable/right_24"/>
+
+</LinearLayout>
+
+
+    -<LinearLayout android:orientation="horizontal" android:layout_height="50dp" android:layout_width="match_parent">
+
+    <TextView android:layout_height="match_parent" android:layout_width="120dp" android:textStyle="bold" android:text="Tên tài khoản" android:paddingTop="12dp" android:paddingLeft="12dp"/>
+
+    <TextView android:layout_height="match_parent" android:layout_width="250dp" android:text="Đình Đại" android:id="@+id/textview_tentaikhoan" android:singleLine="true" android:paddingTop="12dp" android:paddingLeft="60dp"/>
+
+    <Button android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/btn_account_name" android:background="@color/colorWhite" style="?android:attr/borderlessButtonStyle" android:drawableStart="@drawable/right_24"/>
+
+</LinearLayout>
+
+
+    -<LinearLayout android:orientation="horizontal" android:layout_height="50dp" android:layout_width="match_parent">
+
+    <TextView android:layout_height="match_parent" android:layout_width="120dp" android:textStyle="bold" android:text="Giới tính " android:paddingTop="12dp" android:paddingLeft="12dp"/>
+
+    <TextView android:layout_height="match_parent" android:layout_width="250dp" android:text="Nữ" android:id="@+id/textview_gioitinh" android:singleLine="true" android:paddingTop="12dp" android:paddingLeft="60dp"/>
+
+    <Button android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/btn_account_sex" android:background="@color/colorWhite" style="?android:attr/borderlessButtonStyle" android:drawableStart="@drawable/right_24"/>
+
+</LinearLayout>
+
+
+    -<LinearLayout android:orientation="horizontal" android:layout_height="50dp" android:layout_width="match_parent">
+
+    <TextView android:layout_height="match_parent" android:layout_width="120dp" android:textStyle="bold" android:text="Ngày sinh " android:paddingTop="12dp" android:paddingLeft="12dp"/>
+
+    <TextView android:layout_height="match_parent" android:layout_width="250dp" android:text="01/01/2000" android:id="@+id/textview_ngaysinh" android:singleLine="true" android:paddingTop="12dp" android:paddingLeft="60dp"/>
+
+    <Button android:layout_height="match_parent" android:layout_width="match_parent" android:id="@+id/btn_account_date" android:background="@color/colorWhite" style="?android:attr/borderlessButtonStyle" android:drawableStart="@drawable/right_24"/>
+
+</LinearLayout>
+
+    <TextView android:layout_height="60dp" android:layout_width="match_parent" android:textColor="@color/colorDark" android:textSize="15sp" android:textStyle="bold" android:text="Quản lý tài khoản" android:layout_marginTop="15dp" android:paddingTop="25dp" android:paddingLeft="12dp" android:textAllCaps="true"/>
+
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:text="Vô hiệu hóa tài khoản" android:id="@+id/btn_vohieuhoa" style="?android:attr/borderlessButtonStyle" android:textAllCaps="false" android:textAlignment="textStart" android:padding="@dimen/menu_margin"/>
+
+    <Button android:layout_height="wrap_content" android:layout_width="match_parent" android:textColor="@color/colorRed" android:text="Xóa tài khoản" android:id="@+id/button_deleteAccount" style="?android:attr/borderlessButtonStyle" android:textAllCaps="false" android:textAlignment="textStart" android:padding="@dimen/menu_margin"/>
+
+</LinearLayout>
 
 </RelativeLayout>

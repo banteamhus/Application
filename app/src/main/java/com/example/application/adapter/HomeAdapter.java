@@ -13,6 +13,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.application.R;
 import com.example.application.model.ItemAnimation;
 import com.example.application.model.PostData;
@@ -47,7 +51,17 @@ public class HomeAdapter
 
         holder.userName.setText(filteredPostDataList.get(position).getUserName());
         holder.postDesc.setText(filteredPostDataList.get(position).getDescp());
-        holder.postImage.setImageResource(filteredPostDataList.get(position).getImageUrl());
+        RequestOptions reqOpt = RequestOptions
+                .fitCenterTransform()
+                .transform(new RoundedCorners(5))
+                .diskCacheStrategy(DiskCacheStrategy.ALL) // It will cache your image after loaded for first time
+                .override(holder.postImage.getWidth(),holder.postImage.getHeight());
+        // Overrides size of downloaded image and converts it's bitmaps to your desired image size;
+        Glide
+                .with(context)
+                .load(filteredPostDataList.get(position).getImageUrl())
+                .apply(reqOpt)
+                .into(holder.postImage);
 
         ItemAnimation.animateFadeIn(holder.itemView, position);
 

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.application.R;
 import com.example.application.account.User;
+import com.example.application.function.HomeActivity;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -131,7 +132,7 @@ public class LoginActivity extends AppCompatActivity  {
                             // Sign in success, update UI with the signed-in user's information
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công",
                                     Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(LoginActivity.this, Postlish_main_testActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                         } else {
 
@@ -183,7 +184,7 @@ public class LoginActivity extends AppCompatActivity  {
                             upDatabase();
                             // Sign in success, update UI with the signed-in user's information
                             // đẩy dữ liệu người dùng  lên firebase ở mục users
-                            Intent intent = new Intent(LoginActivity.this, Postlish_main_testActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                             startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user
@@ -205,7 +206,7 @@ public class LoginActivity extends AppCompatActivity  {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             if(mAuth.getCurrentUser().isEmailVerified()) {
-                                Intent intent = new Intent(LoginActivity.this, Postlish_main_testActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 startActivity(intent);
                                 Toast.makeText(LoginActivity.this,"Đăng nhập thành công",Toast.LENGTH_SHORT).show();
                             }

@@ -156,7 +156,7 @@ public class AddPost extends AppCompatActivity {
                                 hashMap.put("pImage" , downloadUri);
                                 hashMap.put("pDescription" , description);
                                 hashMap.put("pTime" ,  timeStamp); */
-                                Post post = new Post(title,idcontentPost,downloadUri,firebaseUser.getUid(),firebaseUser.getPhotoUrl().toString());
+                                Post post = new Post(title,idcontentPost,downloadUri,firebaseUser.getUid(),firebaseUser.getDisplayName(),firebaseUser.getPhotoUrl().toString());
 
 
                                 //now we will pust the data to firebase database
