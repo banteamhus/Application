@@ -38,7 +38,6 @@ public class HomeActivity extends AppCompatActivity {
     ViewPager bannerDocumentViewPager;
     List<BannerDocument> bannerDocumentList;
 
-
     private DatabaseReference mDatabase;
     RecyclerView postRecycler;
     HomeAdapter homeAdapter;
