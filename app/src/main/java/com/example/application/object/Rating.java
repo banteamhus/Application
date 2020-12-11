@@ -1,11 +1,11 @@
 public class Rating{
-    private int rating;
+    private float rating;
     private String userId;
     private String writingId;
     public Rating (){
 
     }
-    public Rating (String a, String b, int c){
+    public Rating (String a, String b, float c){
         userId = a;
         writingId = b;
         rating = c;
@@ -16,7 +16,7 @@ public class Rating{
     public String getWritingId (){
         return writingId;
     }
-    public int getRating(){
+    public float getRating(){
         return rating;
     }
     public void setUserId (String a){
@@ -25,7 +25,7 @@ public class Rating{
     public void setWritingId (String b){
         writingId = b;
     }
-    public void setRating (int c){
+    public void setRating (float c){
         rating = c;
     }
 }
