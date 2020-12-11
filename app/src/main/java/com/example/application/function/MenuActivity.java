@@ -2,6 +2,7 @@ package com.example.application.function;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +39,7 @@ public class MenuActivity extends AppCompatActivity {
     TextView textView_name;
     TextView textView_gmail;
     FirebaseAuth mAuth;
-    Button logoutAccount;
+    CardView bt1, bt2, bt3, bt_settings, bt5, bt_logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,13 +77,18 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
-
         linearLayout_header = findViewById(R.id.linear_menu);
         imageView_header =findViewById(R.id.image_menu_header);
         textView_name=findViewById(R.id.textview_name);
         textView_gmail=findViewById(R.id.textview_gmail);
         img_avatar=findViewById(R.id.img_avatar);
-        logoutAccount=findViewById(R.id.button_logout);
+        bt1 = (CardView) findViewById(R.id.bt1);
+        bt2 = (CardView) findViewById(R.id.bt2);
+        bt3 = (CardView) findViewById(R.id.bt3);
+        bt_settings = (CardView) findViewById(R.id.bt_settings);
+        bt5 = (CardView) findViewById(R.id.bt5);
+        bt_logout = (CardView) findViewById(R.id.bt_logout);
+
         mAuth = FirebaseAuth.getInstance();
         final FirebaseUser user = mAuth.getCurrentUser();
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
@@ -120,7 +126,8 @@ public class MenuActivity extends AppCompatActivity {
                 startActivity(new Intent(MenuActivity.this, AccountActivity.class));
             }
         });
-        logoutAccount.setOnClickListener(new View.OnClickListener() {
+
+        bt_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 LoginManager.getInstance().logOut();

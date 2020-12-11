@@ -87,7 +87,6 @@
 
 
     <GridLayout
-        android:layout_above="@+id/view_2"
         android:id="@+id/grid_menu"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/view"
@@ -97,219 +96,213 @@
         android:columnCount="2">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:id="@+id/bt1"
+            android:layout_width="61dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
             android:layout_row="0"
-            android:layout_column="0"
             android:layout_rowWeight="1"
+            android:layout_column="0"
             android:layout_columnWeight="1"
+            android:layout_gravity="fill"
             android:layout_margin="8dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center_horizontal|center_vertical"
+                android:gravity="center"
                 android:orientation="vertical">
+
                 <ImageView
-                    android:layout_width="@dimen/cardview_icon"
+                    android:layout_width="40dp"
                     android:layout_height="@dimen/cardview_icon"
-                    android:src="@drawable/notification"/>
+                    android:src="@drawable/abc_vector_test" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Thông báo"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
+                    android:text="Grid 1"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/bt2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
             android:layout_row="0"
-            android:layout_column="1"
             android:layout_rowWeight="1"
+            android:layout_column="1"
             android:layout_columnWeight="1"
+            android:layout_gravity="fill"
             android:layout_margin="8dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center_horizontal|center_vertical"
+                android:gravity="center"
                 android:orientation="vertical">
+
                 <ImageView
-                    android:layout_width="@dimen/cardview_icon"
+                    android:layout_width="40dp"
                     android:layout_height="@dimen/cardview_icon"
-                    android:src="@drawable/language"/>
+                    android:src="@drawable/abc_vector_test" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ngôn ngữ"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
+                    android:text="Grid 2"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/bt3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
             android:layout_row="1"
+            android:layout_rowWeight="1"
             android:layout_column="0"
-            android:layout_rowWeight="1"
             android:layout_columnWeight="1"
+            android:layout_gravity="fill"
             android:layout_margin="8dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center_horizontal|center_vertical"
+                android:gravity="center"
                 android:orientation="vertical">
+
                 <ImageView
-                    android:layout_width="@dimen/cardview_icon"
+                    android:layout_width="40dp"
                     android:layout_height="@dimen/cardview_icon"
-                    android:src="@drawable/wiget"/>
+                    android:src="@drawable/abc_vector_test" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Wigets"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
+                    android:text="Grid 3"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/bt_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_row="2"
-            android:layout_column="1"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="@dimen/cardview_icon"
-                    android:layout_height="@dimen/cardview_icon"
-                    android:src="@drawable/settings"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Settings"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="fill"
-            android:layout_row="2"
-            android:layout_column="0"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:layout_margin="8dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="@dimen/cardview_icon"
-                    android:layout_height="@dimen/cardview_icon"
-                    android:src="@drawable/save"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Home"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="fill"
             android:layout_row="1"
-            android:layout_column="1"
             android:layout_rowWeight="1"
+            android:layout_column="1"
             android:layout_columnWeight="1"
+            android:layout_gravity="fill"
             android:layout_margin="8dp"
-            app:cardElevation="8dp"
-            app:cardCornerRadius="8dp">
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:layout_gravity="center_horizontal|center_vertical"
+                android:gravity="center"
                 android:orientation="vertical">
+
                 <ImageView
-                    android:layout_width="@dimen/cardview_icon"
+                    android:layout_width="40dp"
                     android:layout_height="@dimen/cardview_icon"
-                    android:src="@drawable/discover"/>
+                    android:src="@drawable/settings" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Search"
-                    android:textStyle="bold"
-                    android:textAlignment="center"/>
+                    android:text="Cài đặt"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bt5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="@dimen/cardview_icon"
+                    android:src="@drawable/abc_vector_test" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Grid 5"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/bt_logout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_row="2"
+            android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="@dimen/cardview_icon"
+                    android:src="@drawable/sign_out" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đăng xuất"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
     </GridLayout>
 
 
-    <View
-        android:layout_above="@id/textView_menu_tooter"
-        android:id="@+id/view_2"
-        android:background="@color/colorGray"
-        android:layout_margin="@dimen/menu_margin"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"/>
-
-    <FrameLayout
-        android:id="@+id/textView_menu_tooter"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginBottom="10dp">
-
-        <Button
-            android:id="@+id/button_logout"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="10dp"
-            android:background="@color/colorWhite"
-            android:drawableLeft="@drawable/sign_out"
-            android:paddingRight="220dp"
-            android:text="Đăng xuất" />
-    </FrameLayout>
     </RelativeLayout>
-
-
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -321,8 +314,5 @@
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
         android:layout_alignParentBottom="true"/>
-
-
-
 
 </RelativeLayout>
