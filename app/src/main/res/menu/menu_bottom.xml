@@ -20,5 +20,5 @@
     <item
         android:id="@+id/nav_menu"
         android:icon="@drawable/menu"
-        android:title="@string/premium_action" />
+        android:title="@string/menu_action" />
 </menu>

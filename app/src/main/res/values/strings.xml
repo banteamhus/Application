@@ -1,5 +1,5 @@
 <resources>
-    <string name="name_mainactivity">Power by BanTeam_K64A3</string>
+    <string name="name_mainactivity">Slogan ở đây</string>
 
     <string name="app_name">Postblish</string>
     <string name="login_email_sdt">Email/Số điện thoại</string>
@@ -33,14 +33,13 @@
     <string name="discover_fragment">Discover fragment</string>
     <string name="publish_fragment">Publish fragment</string>
     <string name="menu_fragment">Menu fragment</string>
-    <string name="premium_fragment">Premium fragment</string>
     <string name="search_fragment">Search fragment</string>
 
     <string name="home_action">Trang chủ</string>
     <string name="library_action">Thư viện </string>
     <string name="discover_action">Khám phá</string>
-    <string name="publish_action">Xuất bản </string>
-    <string name="premium_action">Tài khoản </string>
+    <string name="publish_action">Xuất bản</string>
+    <string name="menu_action">Menu</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_publish_main">Publish_mainActivity</string>
@@ -56,5 +55,28 @@
     <string name="menu_slideshow">Slideshow</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+
+    <string name="grid1">Trống</string>
+    <string name="stats">Thống kê</string>
+    <string name="payment">Thu nhập</string>
+    <string name="settings">Cài đặt</string>
+    <string name="info">Thông tin</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
 </resources>

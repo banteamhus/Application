@@ -10,9 +10,9 @@ import java.util.ArrayList;
 public class WritingComment extends BaseComment{
     private String writingId;
     private ArrayList<ReplyComment> replies;
-    public WritingComment (){
-
-    }
+//    public WritingComment (){
+//
+//    }
     public WritingComment (String a, String b, String c){
         super(a,b);
         writingId = c;    

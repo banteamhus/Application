@@ -39,7 +39,7 @@ public class MenuActivity extends AppCompatActivity {
     TextView textView_name;
     TextView textView_gmail;
     FirebaseAuth mAuth;
-    CardView bt1, bt2, bt3, bt_settings, bt5, bt_logout;
+    CardView bt1, bt_stats, bt_payment, bt_settings, bt_info, bt_logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,10 +83,10 @@ public class MenuActivity extends AppCompatActivity {
         textView_gmail=findViewById(R.id.textview_gmail);
         img_avatar=findViewById(R.id.img_avatar);
         bt1 = (CardView) findViewById(R.id.bt1);
-        bt2 = (CardView) findViewById(R.id.bt2);
-        bt3 = (CardView) findViewById(R.id.bt3);
+        bt_stats = (CardView) findViewById(R.id.bt_stats);
+        bt_payment = (CardView) findViewById(R.id.bt_payment);
         bt_settings = (CardView) findViewById(R.id.bt_settings);
-        bt5 = (CardView) findViewById(R.id.bt5);
+        bt_info = (CardView) findViewById(R.id.bt_info);
         bt_logout = (CardView) findViewById(R.id.bt_logout);
 
         mAuth = FirebaseAuth.getInstance();
@@ -127,15 +127,64 @@ public class MenuActivity extends AppCompatActivity {
             }
         });
 
+        bt_stats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openStats();
+            }
+        });
+
+        bt_payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openPayment();
+            }
+        });
+
+        bt_settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openSettings();
+            }
+        });
+
+        bt_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openInfo();
+            }
+        });
+
         bt_logout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 LoginManager.getInstance().logOut();
                 mAuth.signOut();
                 Intent intent = new Intent(MenuActivity.this, LoginActivity.class);
                 startActivity(intent);
-                Toast.makeText(MenuActivity.this,"Đăng xuất thành công",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MenuActivity.this,"Đăng xuất thành công!",Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    public void openStats() {
+        Intent intent = new Intent(this, StatsActivity.class);
+        startActivity(intent);
+    }
+
+    public void openPayment() {
+        Intent intent = new Intent(this, PaymentActivity.class);
+        startActivity(intent);
+    }
+
+    public void openSettings() {
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void openInfo() {
+        Intent intent = new Intent(this, InfoActivity.class);
+        startActivity(intent);
+    }
+
 }

@@ -18,7 +18,6 @@
         android:layout_height="130dp"
         android:background="@color/colorWhite">
 
-
         <ImageView
             android:id="@+id/image_menu_header"
             android:layout_width="100dp"
@@ -50,7 +49,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
 
                     android:textStyle="bold"
                     android:textColor="@color/colorDark"
@@ -61,7 +60,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="13sp"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginStart="15dp"
                     android:text="trandinhdai_t64@hus.edu.vn"/>
 
             </LinearLayout>
@@ -97,7 +96,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/bt1"
-            android:layout_width="61dp"
+            android:layout_width="62dp"
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_rowWeight="1"
@@ -123,14 +122,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Grid 1"
+                    android:text="@string/grid1"
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/bt2"
+            android:id="@+id/bt_stats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"
@@ -152,19 +151,19 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="@dimen/cardview_icon"
-                    android:src="@drawable/abc_vector_test" />
+                    android:src="@drawable/stats" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Grid 2"
+                    android:text="@string/stats"
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/bt3"
+            android:id="@+id/bt_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="1"
@@ -186,12 +185,12 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="@dimen/cardview_icon"
-                    android:src="@drawable/abc_vector_test" />
+                    android:src="@drawable/payment" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Grid 3"
+                    android:text="@string/payment"
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -225,14 +224,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Cài đặt"
+                    android:text="@string/settings"
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/bt5"
+            android:id="@+id/bt_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="2"
@@ -254,12 +253,12 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="@dimen/cardview_icon"
-                    android:src="@drawable/abc_vector_test" />
+                    android:src="@drawable/info" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Grid 5"
+                    android:text="@string/info"
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -293,14 +292,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Đăng xuất"
+                    android:text="@string/logout"
                     android:textAlignment="center"
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
     </GridLayout>
-
 
     </RelativeLayout>
 
