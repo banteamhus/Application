@@ -22,16 +22,21 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.application.PostManage.Post;
-import com.example.application.PostManage.PostContent;
+import com.bumptech.glide.Glide;
+import com.example.application.account.User;
+import com.example.application.postmanage.Post;
+import com.example.application.postmanage.PostContent;
 import com.example.application.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -54,10 +59,12 @@ public class AddPost extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     FirebaseDatabase firebaseDatabase;
+    private DatabaseReference mDatabase;
     Uri image_uri = null ;
     ProgressDialog pd ;
     private static final  int GALLERY_IMAGE_CODE = 100 ;
     private static final  int CAMERA_IMAGE_CODE = 200 ;
+    User user1 = new User();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +128,19 @@ public class AddPost extends AppCompatActivity {
         final String timeStamp = String.valueOf(System.currentTimeMillis());
         //here we will set the filepath of our image
         String filepath = "Posts/"+"post_"+timeStamp;
-
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        mDatabase = database.getReference("users");
+        mDatabase.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                user1 = dataSnapshot.getValue(User.class);
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
         if (post_image.getDrawable() != null){
             //getImage from Image view ;
             Bitmap bitmap = ((BitmapDrawable)post_image.getDrawable()).getBitmap();
@@ -156,13 +175,13 @@ public class AddPost extends AppCompatActivity {
                                 hashMap.put("pImage" , downloadUri);
                                 hashMap.put("pDescription" , description);
                                 hashMap.put("pTime" ,  timeStamp); */
-                                Post post = new Post(title,idcontentPost,downloadUri,firebaseUser.getUid(),firebaseUser.getDisplayName(),firebaseUser.getPhotoUrl().toString());
-
+                                Post post = new Post(idcontentPost,title,downloadUri,user1.getId(),user1.getName(),user1.getPhotoUrl());
+                                post.setTimeStamp(timeStamp);
 
                                 //now we will pust the data to firebase database
 
                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Posts");
-                                ref.child(timeStamp).setValue(post)
+                                ref.child(post.getTimeStamp().toString()).setValue(post)
                                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
                                             public void onSuccess(Void aVoid) {

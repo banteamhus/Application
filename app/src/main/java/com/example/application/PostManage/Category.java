@@ -1,4 +1,4 @@
-package com.example.application.PostManage;
+package com.example.application.postmanage;
 
 public enum Category {
     CATEGORY_001("CATEGORY_001","Chính trị – pháp luật"),

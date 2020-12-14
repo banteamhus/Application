@@ -15,12 +15,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".function.InfoActivity"></activity>
-        <activity android:name=".function.PaymentActivity" />
-        <activity
-            android:name=".function.SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity android:name=".function.StatsActivity" />
+        <activity android:name=".function.CommentActivity"></activity>
+        <activity android:name=".function.PremiumActivity" />
+        <activity android:name=".function.WritingActivity" />
+        <activity android:name=".model.NotificationDetails" />
         <activity android:name=".function.NotificationActivity" />
         <activity android:name=".function.LibraryActivity" />
         <activity android:name=".function.PublishActivity" />

@@ -14,12 +14,12 @@
         android:layout_above="@id/bottom_navigation">
 
         <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <androidx.appcompat.widget.Toolbar
                 app:title="Library"
-                android:background="@color/colorBule"
+                android:background="@color/colorWhite"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 app:layout_scrollFlags="enterAlways">
@@ -28,8 +28,8 @@
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/TabLayout"
                 android:background="@color/colorWhite"
-                app:tabSelectedTextColor="@android:color/darker_gray"
-                app:tabIndicatorColor="@android:color/darker_gray"
+                app:tabSelectedTextColor="@color/colorDark"
+                app:tabIndicatorColor="@color/colorDark"
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"/>
 

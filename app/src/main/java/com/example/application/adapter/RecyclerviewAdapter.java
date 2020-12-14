@@ -5,134 +5,100 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.application.R;
-import com.example.application.model.ItemAnimation;
-import com.example.application.model.UserData;
-import com.example.application.model.UserDetails;
+import com.example.application.function.WritingActivity;
+import com.example.application.postmanage.Post;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
-public class RecyclerviewAdapter
-extends RecyclerView.Adapter<RecyclerviewAdapter.RecyclerviewHolder> {
+    private Context mContext ;
+    private List<Post> mData ;
 
-    Context context;
-    List<UserData> userDataList;
-    List<UserData> filteredUserDataList;
 
-    public RecyclerviewAdapter(Context context, List<UserData> userDataList) {
-        this.context = context;
-        this.userDataList = userDataList;
-        this.filteredUserDataList = userDataList;
-    }
-
-    @NonNull
-    @Override
-    public RecyclerviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-        View view = LayoutInflater.from(context).inflate(R.layout.recyclerview_row_item, parent, false);
-        return new RecyclerviewHolder(view);
+    public RecyclerViewAdapter(Context mContext, List<Post> mData) {
+        this.mContext = mContext;
+        this.mData = mData;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerviewHolder holder, final int position) {
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        holder.userName.setText(filteredUserDataList.get(position).getUserName());
-        holder.userDesc.setText(filteredUserDataList.get(position).getDescp());
-        holder.userImage.setImageResource(filteredUserDataList.get(position).getImageUrl());
+        View view ;
+        LayoutInflater mInflater = LayoutInflater.from(mContext);
+        view = mInflater.inflate(R.layout.card_view,parent,false);
+        return new MyViewHolder(view);
+    }
 
-        ItemAnimation.animateFadeIn(holder.itemView, position);
+    @Override
+    public void onBindViewHolder(MyViewHolder holder, final int position) {
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        Post post=mData.get(position);
+
+        holder.txtTitle.setText(mData.get(position).getTitle());
+        holder.txtName.setText(mData.get(position).getUserName());
+        Glide.with(mContext).load(mData.get(position).getPicture()).into(holder.imageView);
+
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
 
-                Intent intent = new Intent(context, UserDetails.class);
-                intent.putExtra("username", filteredUserDataList.get(position).getUserName());
-                intent.putExtra("userDesc", filteredUserDataList.get(position).getDescp());
-                context.startActivity(intent);
+                Intent intent = new Intent(mContext, WritingActivity.class);
+                // postId -> writingactivity
+                /// add them cai content thi no eo nhan cai j, sua cai key id thành getPostcontent thì nó lại nhận được,
+                intent.putExtra("Id",post.getPostContentId());
+                intent.putExtra("Content",post.getPostContentId());
+                intent.putExtra("Id_user",post.getUserId());
+                intent.putExtra("Name",post.getUserName());
+                intent.putExtra("Image",post.getPicture());
+                intent.putExtra("Photo",post.getUserPhoto());
+                // đang test cái name: title là post_id
+                intent.putExtra("Title",post.getTimeStamp().toString());
+                //intent.putExtra("Title",post.getTitle());
+                /*
+                // passing data to the book activity
+                intent.putExtra("Title",mData.get(position).getTitle());
+                intent.putExtra("Description",mData.get(position).getDescription());
+                intent.putExtra("Thumbnail",mData.get(position).getThumbnail());
+                */
+                // start the activity
+                mContext.startActivity(intent);
+
             }
         });
 
-        holder.userImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "User Name Clicked", Toast.LENGTH_SHORT).show();
-
-            }
-        });
 
 
     }
 
     @Override
     public int getItemCount() {
-        return filteredUserDataList.size();
+        return mData.size();
     }
 
-    public static final class RecyclerviewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
+        CardView cardView ;
+        TextView txtTitle, txtName;
+        ImageView imageView;
 
-        CircleImageView userImage;
-        TextView userName, userDesc;
-
-        public RecyclerviewHolder(@NonNull View itemView) {
+        public MyViewHolder(View itemView) {
             super(itemView);
 
-            userImage = itemView.findViewById(R.id.userImage);
-            userName = itemView.findViewById(R.id.userName);
-            userDesc = itemView.findViewById(R.id.userDesc);
-
+            txtTitle = (TextView) itemView.findViewById(R.id.textview_title_id) ;
+            txtName = (TextView) itemView.findViewById(R.id.textview_name_id) ;
+            imageView = (ImageView) itemView.findViewById(R.id.book_img_id);
+            cardView = (CardView) itemView.findViewById(R.id.cardview_id);
 
         }
-    }
-
-    public Filter getFilter(){
-
-        return new Filter() {
-            @Override
-            protected FilterResults performFiltering(CharSequence charSequence) {
-
-                String Key = charSequence.toString();
-                if(Key.isEmpty()){
-                    filteredUserDataList = userDataList;
-                }
-                else{
-
-                    List<UserData> lstFiltered = new ArrayList<>();
-                    for(UserData row: userDataList){
-                        if(row.getUserName().toLowerCase().contains(Key.toLowerCase())){
-                            lstFiltered.add(row);
-
-                        }
-                    }
-
-                    filteredUserDataList = lstFiltered;
-                }
-
-                FilterResults filterResults = new FilterResults();
-                filterResults.values = filteredUserDataList;
-                return filterResults;
-            }
-
-            @Override
-            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-
-                filteredUserDataList = (List<UserData>)filterResults.values;
-                notifyDataSetChanged();
-
-            }
-        };
-
     }
 
 

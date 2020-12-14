@@ -1,9 +1,11 @@
-package com.example.application.PostManage;
+package com.example.application.postmanage;
 
 
 import com.google.firebase.database.ServerValue;
 
 public class Post {
+
+
     private String postKey;
     private String title;
     private String postContentId;
@@ -14,7 +16,8 @@ public class Post {
     private Object timeStamp;
 
 
-    public Post(String title, String postContentId, String picture, String userId,String userName,String userPhoto) {
+
+    public Post( String postContentId,String title, String picture, String userId,String userName,String userPhoto) {
         this.title = title;
         this.postContentId = postContentId;
         this.picture = picture;
@@ -27,6 +30,10 @@ public class Post {
     // make sure to have an empty constructor inside ur model class
     public Post() {
     }
+
+
+
+
 
     public String getUserName() {
         return userName;

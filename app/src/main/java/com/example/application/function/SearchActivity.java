@@ -13,20 +13,27 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.example.application.R;
-import com.example.application.adapter.RecyclerviewAdapter;
+import com.example.application.adapter.SearchAdapter;
+import com.example.application.model.AllPost;
 import com.example.application.model.UserData;
+import com.example.application.postmanage.Post;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchActivity extends AppCompatActivity {
 
-    RecyclerView userRecycler;
-    RecyclerviewAdapter recyclerviewAdapter;
+    RecyclerView postRecycler;
+    SearchAdapter searchAdapter;
     EditText searchView;
     CharSequence search="";
-
+    private DatabaseReference mDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,8 +73,8 @@ public class SearchActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.search_bar);
 
-        List<UserData> userDataList = new ArrayList<>();
-        userDataList.add(new UserData("Anderson Thomas","Android is awesome and this is the part 3 of recyclerview.", R.drawable.photo_male_1));
+        List<Post> postDataList = new ArrayList<>();
+     /*  userDataList.add(new UserData("Anderson Thomas","Android is awesome and this is the part 3 of recyclerview.", R.drawable.photo_male_1));
         userDataList.add(new UserData("Adams Green","Android is awesome and this is the part 3 of recyclerview.", R.drawable.photo_male_2));
         userDataList.add(new UserData("Laura Michelle","Android is awesome and this is the part 3 of recyclerview.", R.drawable.photo_male_3));
         userDataList.add(new UserData("Betty L","Android is awesome and this is the part 3 of recyclerview.", R.drawable.photo_male_4));
@@ -83,38 +90,67 @@ public class SearchActivity extends AppCompatActivity {
         userDataList.add(new UserData("Roberts Turner","Android is awesome and this is the part 3 of recyclerview.", R.drawable.photo_female_2));
         userDataList.add(new UserData("Mary Jackson","Android is awesome and this is the part 3 of recyclerview.", R.drawable.photo_female_3));
         userDataList.add(new UserData("Sarah Scott","Android is awesome and this is the part 3 of recyclerview.", R.drawable.photo_female_4));
+        */
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        mDatabase = database.getReference("Posts");
 
-
-
-        setUserRecycler(userDataList);
-
-
-        searchView.addTextChangedListener(new TextWatcher() {
+        mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot postsnap: dataSnapshot.getChildren()) {
+                    Post post = postsnap.getValue(Post.class);
+                    postDataList.add(post);
+                }
+                setPostRecycler(postDataList);
 
+                //
+
+                searchView.addTextChangedListener(new TextWatcher() {
+                    @Override
+                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                    }
+
+                    @Override
+                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                        searchAdapter.getFilter().filter(charSequence);
+                        search = charSequence;
+                    }
+
+                    @Override
+                    public void afterTextChanged(Editable editable) {
+
+                    }
+                });
+                //
+
+                /*
+                String size = String.valueOf(postList1.size());
+                Toast.makeText(HomeActivity.this,size,Toast.LENGTH_SHORT).show();*/
+
+
+                // homeAdapter = new HomeAdapter(HomeActivity.this,postDataList);
+                //postRecycler.setAdapter(homeAdapter);
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-                recyclerviewAdapter.getFilter().filter(charSequence);
-                search = charSequence;
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
+
+
+
+
     }
 
-    private  void  setUserRecycler(List<UserData> userDataList){
-        userRecycler = findViewById(R.id.userRecycler);
+    private  void  setPostRecycler(List<Post> postDataList){
+        postRecycler = findViewById(R.id.userRecycler);
         RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this, RecyclerView.VERTICAL, false);
-        userRecycler.setLayoutManager(layoutManager);
-        recyclerviewAdapter = new RecyclerviewAdapter(this,userDataList);
-        userRecycler.setAdapter(recyclerviewAdapter);
+        postRecycler.setLayoutManager(layoutManager);
+        searchAdapter = new SearchAdapter(SearchActivity.this,postDataList);
+        postRecycler.setAdapter(searchAdapter);
     }
 }

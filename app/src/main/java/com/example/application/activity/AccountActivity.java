@@ -27,6 +27,7 @@ import com.example.application.update_account.DateActivity;
 import com.example.application.update_account.NameActivity;
 import com.example.application.update_account.PasswordActivity;
 import com.example.application.update_account.SexActivity;
+
 import com.facebook.login.LoginManager;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
