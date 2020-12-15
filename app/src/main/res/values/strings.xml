@@ -26,7 +26,6 @@
 
     <string name="facebook_app_id">2779649598925007</string>
     <string name="fb_login_protocol_scheme">fb2779649598925007</string>
-
     <!-- TODO: Remove or change this placeholder text -->
     <string name="home_fragment">Home fragment</string>
     <string name="library_fragment">Library fragment</string>
@@ -40,7 +39,15 @@
     <string name="library_action">Thư viện </string>
     <string name="discover_action">Khám phá</string>
     <string name="publish_action">Xuất bản </string>
-    <string name="premium_action">Tài khoản </string>
+    <string name="menu_action">Menu</string>
+
+    <string name="grid1">Trống</string>
+    <string name="stats">Thống kê</string>
+    <string name="payment">Thu nhập</string>
+    <string name="settings">Cài đặt</string>
+    <string name="info">Thông tin</string>
+    <string name="logout">Đăng xuất</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_publish_main">Publish_mainActivity</string>
@@ -51,10 +58,23 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <string name="messages_header"></string>
+    <string name="signature_title"></string>
+    <string name="reply_title"></string>
+    <string name="sync_header"></string>
+
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
 
 </resources>

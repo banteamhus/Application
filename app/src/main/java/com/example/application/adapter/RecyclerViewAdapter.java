@@ -23,7 +23,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context mContext ;
     private List<Post> mData ;
 
-
     public RecyclerViewAdapter(Context mContext, List<Post> mData) {
         this.mContext = mContext;
         this.mData = mData;
